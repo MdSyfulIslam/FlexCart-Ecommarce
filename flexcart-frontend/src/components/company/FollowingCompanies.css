@@ -1,0 +1,200 @@
+.following-companies { max-width: 900px; margin: 0 auto; }
+
+.companies-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.company-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.company-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.company-card-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.company-card-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.company-card-info { flex: 1; min-width: 0; }
+.company-card-info h4 { font-size: 0.9375rem; margin: 0 0 2px; }
+.company-category { font-size: 0.75rem; color: var(--text-secondary); margin: 0; }
+.company-followed { font-size: 0.6875rem; color: var(--text-tertiary); margin: 0; }
+
+.company-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.company-notif-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--text-tertiary);
+}
+
+.company-notif-btn.notif-on {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: rgba(79, 70, 229, 0.08);
+}
+
+.company-notif-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.company-notif-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.company-unfollow-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.company-unfollow-btn:hover:not(:disabled) {
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.company-unfollow-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Unfollow confirmation dialog */
+.unfollow-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.unfollow-dialog {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.unfollow-dialog__icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.unfollow-dialog h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 10px;
+}
+
+.unfollow-dialog p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.unfollow-dialog p strong {
+  color: var(--text-primary);
+}
+
+.unfollow-dialog__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.unfollow-dialog__no {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.unfollow-dialog__no:hover {
+  background: var(--bg-hover);
+}
+
+.unfollow-dialog__yes {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: #ef4444;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.unfollow-dialog__yes:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+/* ── Mobile Responsiveness ── */
+@media (max-width: 480px) {
+  .company-card-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 6px;
+  }
+  .company-card-actions button {
+    width: 100%;
+  }
+}

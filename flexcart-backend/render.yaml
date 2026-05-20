@@ -1,0 +1,59 @@
+services:
+  - type: web
+    name: flex-cart-main
+    runtime: node
+    region: oregon
+
+    # Free plan (512 MB RAM) — this works because we use ONNX Runtime instead
+    # of PyTorch.  Memory breakdown at runtime:
+    #   Node.js:                    ~200 MB
+    #   Python Flask:               ~80  MB
+    #   onnxruntime-cpu:            ~80  MB
+    #   CLIP vision ONNX INT8 model: ~100 MB (loaded from ai/models/)
+    #   ─────────────────────────────────────
+    #   Total:                      ~460 MB  ← fits in 512 MB
+    plan: free
+
+    rootDir: .
+
+    # Build steps (output is baked into the runtime image):
+    #   1. Install Python deps — onnxruntime + Flask + PIL (no PyTorch needed)
+    #   2. Download quantized CLIP ONNX visual encoder (~86 MB) from HuggingFace.
+    #      Non-fatal: if the download fails, the service falls back to PIL
+    #      histogram features (lower accuracy) and the build still succeeds.
+    #   3. Install Node.js deps
+    buildCommand: >-
+      pip3 install --no-cache-dir --target=ai/vendor -r ai/requirements.txt &&
+      (python3 ai/download_model.py || echo "CLIP model download skipped — will use histogram fallback") &&
+      npm install
+
+    startCommand: node --max-old-space-size=460 server.js
+
+    healthCheckPath: /api/health
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VS_PORT
+        value: "5001"
+      - key: VS_AUTOSTART
+        value: "true"
+
+      # ── SSLCommerz Payment Gateway (Sandbox) ─────────────────────────────────
+      # Set SSL_IS_LIVE=true and update Store ID/Password when going live.
+      - key: SSL_STORE_ID
+        value: flexc6a09c08304f33
+      - key: SSL_STORE_PASSWORD
+        value: flexc6a09c08304f33@ssl
+      - key: SSL_IS_LIVE
+        value: "false"
+
+      # ── Deployed URLs ─────────────────────────────────────────────────────────
+      # BACKEND_URL  → SSLCommerz posts success/fail/cancel/ipn callbacks here
+      # FRONTEND_URL → payment result pages redirect here after confirmation
+      - key: BACKEND_URL
+        value: https://flex-cart-main.onrender.com
+      - key: BACKEND_PUBLIC_URL
+        value: https://flex-cart-main.onrender.com
+      - key: FRONTEND_URL
+        value: https://flex-cart-main.vercel.app

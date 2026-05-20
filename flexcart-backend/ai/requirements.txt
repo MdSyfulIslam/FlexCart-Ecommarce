@@ -1,0 +1,22 @@
+# FlexCart Visual Search Service — Python Dependencies
+# Install with: pip install -r ai/requirements.txt
+#
+# v5: Quantized CLIP ViT-B/32 via ONNX Runtime — semantic image search
+# with zero PyTorch dependency at runtime.
+#
+# Memory profile at runtime (~260 MB Python RSS total):
+#   onnxruntime:               ~80 MB
+#   CLIP vision ONNX (INT8):  ~100 MB loaded
+#   Flask + PIL + numpy + pg:  ~80 MB
+#
+# Combined with Node.js (~200 MB) = ~460 MB — fits in Render free tier (512 MB).
+
+# ONNX Runtime — CPU-only inference engine, no PyTorch needed
+onnxruntime>=1.17.0
+
+# Core dependencies
+flask>=3.1.0
+Pillow>=10.3.0
+numpy>=1.26.0
+requests>=2.31.0
+psycopg2-binary>=2.9.9

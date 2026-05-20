@@ -1,0 +1,256 @@
+/* =========================================
+   CATEGORY BAR - Auto-hide on scroll
+   ========================================= */
+
+.category-bar {
+  position: fixed;
+  top: var(--header-height);
+  left: var(--sidebar-width-collapsed);
+  right: 0;
+  height: var(--category-bar-height);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 24px;
+  z-index: calc(var(--z-header) - 1);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.category-bar.cb-transparent {
+  background: transparent;
+  border-bottom: none;
+}
+
+.category-bar.cb-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.category-bar.cb-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cb-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+/* ====== BUTTONS - Uses appearance color (--primary) ====== */
+.cb-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+/* Hover - full opacity + primary color accent */
+.cb-btn:hover {
+  opacity: 1;
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Active (dropdown open) - full opacity + primary color */
+.cb-btn.active {
+  opacity: 1;
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(var(--primary-rgb, 79, 70, 229), 0.06);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 79, 70, 229), 0.08);
+}
+
+/* Has selection - more visible + primary tint */
+.cb-btn.has-selection {
+  opacity: 0.85;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.cb-btn.has-selection:hover {
+  opacity: 1;
+}
+
+/* When transparent bg active - glass buttons */
+.cb-transparent .cb-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0.65;
+}
+
+.cb-transparent .cb-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--primary);
+  color: var(--primary-light);
+  opacity: 1;
+}
+
+.cb-transparent .cb-btn.active {
+  background: rgba(var(--primary-rgb, 79, 70, 229), 0.2);
+  border-color: var(--primary);
+  color: var(--primary-light);
+  opacity: 1;
+}
+
+.cb-transparent .cb-btn.has-selection {
+  border-color: var(--primary);
+  color: var(--primary-light);
+  opacity: 0.8;
+}
+
+/* Light theme + transparent bg */
+[data-theme="light"] .cb-transparent .cb-btn {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] .cb-transparent .cb-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: var(--primary);
+  color: var(--primary);
+  opacity: 1;
+}
+
+[data-theme="light"] .cb-transparent .cb-btn.active {
+  background: rgba(var(--primary-rgb, 79, 70, 229), 0.08);
+  border-color: var(--primary);
+  color: var(--primary);
+  opacity: 1;
+}
+
+/* Arrow */
+.cb-arrow {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.cb-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+/* ====== RECOMMENDATIONS BUTTON ====== */
+.cb-recommendations-btn {
+  order: -1;
+  margin-right: 8px;
+}
+
+/* ====== DROPDOWN - Uses appearance color ====== */
+.cb-dropdown-wrapper {
+  position: relative;
+}
+
+.cb-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.06),
+    0 10px 30px -4px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  padding: 6px 0;
+  pointer-events: auto;
+}
+
+.cb-dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 9px 16px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  text-align: left;
+  pointer-events: auto;
+  position: relative;
+  z-index: 10000;
+}
+
+.cb-dropdown-item:hover {
+  background: var(--bg-hover);
+  color: var(--primary);
+}
+
+.cb-dropdown-item.active {
+  color: var(--primary);
+  background: rgba(var(--primary-rgb, 79, 70, 229), 0.06);
+  font-weight: 600;
+}
+
+.cb-count {
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+  background: var(--bg-tertiary);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+/* Scrollbar */
+.cb-dropdown::-webkit-scrollbar { width: 4px; }
+.cb-dropdown::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: 4px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .category-bar {
+    left: 0;
+    padding: 0 12px;
+  }
+
+  .cb-btn {
+    padding: 6px 12px;
+    font-size: 0.76rem;
+  }
+
+  .cb-btn span {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 480px) {
+  .cb-inner {
+    gap: 6px;
+  }
+
+  .cb-btn {
+    padding: 6px 10px;
+    font-size: 0.72rem;
+    gap: 4px;
+  }
+}

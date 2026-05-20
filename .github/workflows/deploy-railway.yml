@@ -1,0 +1,48 @@
+name: Deploy FlexCart Backend to Render
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set all env vars on Render (PostgreSQL)
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          SERVICE_ID="srv-d82fbekvikkc73a8juig"
+          DB_URL="postgresql://flexcart_user:FlexCart2024SecurePass@dpg-d82g005ckfvc73bm6kbg-a/flexcart_db_murn"
+
+          curl -s -X PUT "https://api.render.com/v1/services/$SERVICE_ID/env-vars" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "[
+              {\"key\": \"NODE_ENV\",              \"value\": \"production\"},
+              {\"key\": \"PORT\",                  \"value\": \"10000\"},
+              {\"key\": \"DATABASE_URL\",           \"value\": \"$DB_URL\"},
+              {\"key\": \"JWT_SECRET\",             \"value\": \"flexcart_jwt_super_secret_2024_production_xyz789\"},
+              {\"key\": \"JWT_REFRESH_SECRET\",     \"value\": \"flexcart_refresh_super_secret_2024_production_abc456\"},
+              {\"key\": \"JWT_EXPIRES_IN\",         \"value\": \"7d\"},
+              {\"key\": \"JWT_REFRESH_EXPIRES_IN\", \"value\": \"30d\"},
+              {\"key\": \"FRONTEND_URL\",           \"value\": \"https://flexcart-frontend.vercel.app\"},
+              {\"key\": \"BACKEND_PUBLIC_URL\",     \"value\": \"https://flexcart-backend.onrender.com\"},
+              {\"key\": \"PUBLIC_BASE_URL\",        \"value\": \"https://flexcart-backend.onrender.com\"},
+              {\"key\": \"DB_INIT_SKIP_DEMO\",      \"value\": \"true\"}
+            ]"
+          echo "Env vars updated"
+
+      - name: Trigger Render deploy
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          SERVICE_ID="srv-d82fbekvikkc73a8juig"
+          RESULT=$(curl -s -X POST "https://api.render.com/v1/services/$SERVICE_ID/deploys" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"clearCache": "do_not_clear"}')
+          echo "Deploy triggered: $(echo $RESULT | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('id'), d.get('status'))" 2>/dev/null)"

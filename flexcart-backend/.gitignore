@@ -1,0 +1,13 @@
+node_modules/
+.env
+*.log
+uploads/**/*
+!uploads/**/.gitkeep
+
+# Downloaded CLIP ONNX model — rebuilt at deploy time via download_model.py
+ai/models/*.onnx
+ai/models/*.tmp
+ai/__pycache__/
+
+# Python packages installed via pip --target during Render build (runtime only)
+ai/vendor/

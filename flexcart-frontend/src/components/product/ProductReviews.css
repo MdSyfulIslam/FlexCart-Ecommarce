@@ -1,0 +1,321 @@
+.product-reviews {
+    padding: 4px 0;
+}
+
+.product-reviews__form {
+    background: var(--bg-tertiary, rgba(30,41,59,0.4));
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.product-reviews__form h4 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    color: var(--text-primary, #e2e8f0);
+}
+
+.product-reviews__stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.review-star {
+    font-size: 28px;
+    color: #C0C0C0; /* silver - unselected */
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.review-star.filled {
+    color: #FFD700; /* gold - selected */
+}
+
+.review-star:hover {
+    color: #FFD700;
+}
+
+.rating-label {
+    margin-left: 8px;
+    font-size: 13px;
+    color: var(--text-secondary, #94a3b8);
+}
+
+.product-reviews__form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border, rgba(100,116,139,0.2));
+    border-radius: 8px;
+    background: var(--bg-secondary, #1e293b);
+    color: var(--text-primary, #e2e8f0);
+    resize: vertical;
+    font-size: 0.875rem;
+    font-family: inherit;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.product-reviews__form textarea:focus {
+    border-color: var(--primary, #667eea);
+}
+
+.submit-review-btn {
+    padding: 10px 24px;
+    background: var(--primary, #667eea);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.review-star-cost {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #94a3b8);
+    margin-bottom: 8px;
+}
+
+.submit-review-btn:hover:not(:disabled) {
+    filter: brightness(1.1);
+}
+
+.submit-review-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.no-reviews {
+    text-align: center;
+    color: var(--text-secondary, #94a3b8);
+    padding: 30px 0;
+    font-size: 0.875rem;
+}
+
+.review-item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border, rgba(100,116,139,0.15));
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.review-item__user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-item__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.review-item__avatar--initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    user-select: none;
+}
+
+.review-item__name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-primary, #e2e8f0);
+    display: block;
+    letter-spacing: 0.01em;
+}
+
+.review-item__name-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.review-item__badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 99px;
+    letter-spacing: 0.03em;
+    vertical-align: middle;
+}
+
+.review-item__verified {
+    font-size: 11px;
+    color: #059669;
+    background: rgba(5, 150, 105, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.review-item__rating .star-small {
+    font-size: 14px;
+    color: #C0C0C0; /* silver - unselected */
+}
+
+.review-item__rating .star-small.filled {
+    color: #FFD700; /* gold - selected */
+}
+
+.review-item__text {
+    font-size: 14px;
+    color: var(--text-primary, #e2e8f0);
+    line-height: 1.6;
+    margin: 0 0 6px;
+}
+
+.review-item__date {
+    font-size: 12px;
+    color: var(--text-secondary, #94a3b8);
+}
+
+.review-item__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.seller-reply-btn {
+    background: none;
+    border: 1px solid var(--primary, #667eea);
+    color: var(--primary, #667eea);
+    border-radius: 6px;
+    padding: 3px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.seller-reply-btn:hover {
+    background: var(--primary, #667eea);
+    color: #fff;
+}
+
+.seller-reply-btn--edit {
+    font-size: 11px;
+    margin-top: 6px;
+    padding: 2px 10px;
+}
+
+.seller-reply-form {
+    margin-top: 10px;
+    background: var(--bg-tertiary, rgba(30,41,59,0.4));
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.seller-reply-form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1.5px solid var(--border, rgba(100,116,139,0.2));
+    border-radius: 6px;
+    background: var(--bg-secondary, #1e293b);
+    color: var(--text-primary, #e2e8f0);
+    resize: vertical;
+    font-size: 0.875rem;
+    font-family: inherit;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.seller-reply-form textarea:focus {
+    border-color: var(--primary, #667eea);
+}
+
+.seller-reply-form__actions {
+    display: flex;
+    gap: 8px;
+}
+
+.seller-reply-submit {
+    padding: 6px 16px;
+    background: var(--primary, #667eea);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: filter 0.15s;
+}
+
+.seller-reply-submit:hover:not(:disabled) {
+    filter: brightness(1.1);
+}
+
+.seller-reply-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.seller-reply-cancel {
+    padding: 6px 14px;
+    background: transparent;
+    color: var(--text-secondary, #94a3b8);
+    border: 1px solid var(--border, rgba(100,116,139,0.2));
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.15s;
+}
+
+.seller-reply-cancel:hover {
+    background: var(--bg-tertiary, rgba(30,41,59,0.4));
+}
+
+.seller-reply-block {
+    margin-top: 10px;
+    background: var(--bg-tertiary, rgba(30,41,59,0.3));
+    border-left: 3px solid var(--primary, #667eea);
+    border-radius: 0 8px 8px 0;
+    padding: 8px 12px;
+}
+
+.seller-reply-block__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary, #667eea);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.seller-reply-block__text {
+    font-size: 13px;
+    color: var(--text-primary, #e2e8f0);
+    line-height: 1.5;
+    margin: 0;
+}
+/* ── Mobile Responsiveness ── */
+@media (max-width: 480px) {
+  .product-reviews__form textarea,
+  .seller-reply-form textarea {
+    font-size: 1rem;
+  }
+  .product-reviews__form {
+    padding: 12px;
+  }
+}

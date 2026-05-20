@@ -1,0 +1,455 @@
+/* ─── Add Product Modal — Light Professional Theme ─── */
+.apm-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.apm-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  border: 1px solid #e5e7eb;
+}
+
+/* ─── Header ─── */
+.apm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 1;
+}
+
+.apm-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.apm-header-icon {
+  color: #6366f1;
+}
+
+.apm-header h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.apm-close {
+  background: #f3f4f6;
+  border: none;
+  color: #6b7280;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.apm-close:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+/* ─── Form ─── */
+.apm-form {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.apm-section label,
+.apm-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.apm-hint {
+  font-weight: 400;
+  color: #9ca3af;
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ─── Image Upload ─── */
+.apm-images {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.apm-image-preview {
+  width: 78px;
+  height: 78px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.apm-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apm-remove-img {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background: rgba(239, 68, 68, 0.9);
+  border: none;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apm-primary-badge {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  background: #6366f1;
+  color: white;
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.apm-upload-box {
+  width: 78px;
+  height: 78px;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #9ca3af;
+  gap: 4px;
+  font-size: 11px;
+  transition: all 0.2s;
+  background: #fafafa;
+}
+
+.apm-upload-box:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+  background: #f0f0ff;
+}
+
+/* ─── Fields ─── */
+.apm-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.apm-field.full {
+  grid-column: span 2;
+}
+
+.apm-field input,
+.apm-field select,
+.apm-field textarea {
+  width: 100%;
+  padding: 9px 13px;
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 7px;
+  color: #111827;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.apm-field input::placeholder,
+.apm-field textarea::placeholder {
+  color: #9ca3af;
+}
+
+.apm-field input:focus,
+.apm-field select:focus,
+.apm-field textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.apm-field select {
+  cursor: pointer;
+}
+
+.apm-field textarea {
+  resize: vertical;
+}
+
+/* ─── Toggle labels ─── */
+.apm-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+  padding: 10px 14px;
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.apm-toggle-label:hover {
+  border-color: #6366f1;
+  background: #f5f5ff;
+}
+
+.apm-toggle-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #6366f1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ─── Price Preview ─── */
+.apm-price-preview {
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.apm-price-preview h4 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.apm-price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.apm-price-row.highlight {
+  color: #6366f1;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 8px 0;
+  border-top: 1.5px solid #e5e7eb;
+  margin-top: 4px;
+}
+
+.apm-price-row.min-row {
+  color: #ef4444;
+  font-size: 12px;
+}
+
+.apm-price-row.apm-reward-row {
+  color: #10b981;
+  font-weight: 600;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 2px;
+  padding-top: 6px;
+}
+
+/* ─── Submit ─── */
+.apm-error {
+  color: #ef4444;
+  font-size: 13px;
+  text-align: center;
+  margin: 0;
+  padding: 8px;
+  background: #fef2f2;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
+}
+
+.apm-submit {
+  width: 100%;
+  padding: 12px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.3px;
+}
+
+.apm-submit:hover {
+  background: #4f46e5;
+}
+
+.apm-submit:active {
+  transform: scale(0.99);
+}
+
+.apm-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ─── Badges ─── */
+.apm-existing-badge {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  background: #3b82f6;
+  color: white;
+  font-size: 8px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.apm-new-badge {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  background: #10b981;
+  color: white;
+  font-size: 8px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.apm-image-hint {
+  font-size: 11px;
+  color: #9ca3af;
+  margin: 5px 0 0;
+}
+
+.apm-ar-fields {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f0f7ff;
+  border-radius: 8px;
+  border: 1px solid #bfdbfe;
+}
+
+.apm-ar-qr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.apm-ar-qr-preview {
+  width: 78px;
+  height: 78px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.apm-ar-qr-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apm-ar-remove {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background: rgba(239, 68, 68, 0.9);
+  border: none;
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apm-images-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.apm-mini-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e5e7eb;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: apmSpin 0.7s linear infinite;
+}
+
+@keyframes apmSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Mobile Responsiveness ── */
+@media (max-width: 768px) {
+  .apm-modal {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+    margin: 0;
+    max-height: 92vh;
+  }
+  .apm-overlay {
+    align-items: flex-end;
+  }
+  .apm-form {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .apm-header h2 {
+    font-size: 1rem;
+  }
+}

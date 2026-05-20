@@ -1,0 +1,182 @@
+.company-review-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.company-review-modal {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.company-review-modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.company-review-modal__header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #1f2937;
+}
+
+.close-btn {
+    background: #f3f4f6;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.company-review-modal__body {
+    padding: 24px;
+}
+
+.review-info {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0 0 16px;
+    text-align: center;
+}
+
+.company-review-modal__stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.review-star-large {
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.review-star-large.silver {
+    color: #c0c0c0;
+}
+
+.review-star-large.gold {
+    color: #fbbf24;
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
+}
+
+.review-star-large:hover {
+    transform: scale(1.15);
+}
+
+.star-label {
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 16px;
+}
+
+.company-review-modal__body textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+.company-review-modal__body textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.review-error {
+    color: #ef4444;
+    font-size: 13px;
+    margin: 0 0 12px;
+    text-align: center;
+}
+
+.company-review-modal__body .submit-review-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.company-review-modal__body .submit-review-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.company-review-modal__title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.company-review-modal__title-row h3 {
+    margin: 0;
+    font-size: 17px;
+    color: #1f2937;
+}
+
+.company-review-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: #7c3aed;
+    background: #ede9fe;
+    border: 1px solid #c4b5fd;
+    border-radius: 20px;
+    padding: 2px 10px;
+    white-space: nowrap;
+}
+
+.review-type-note {
+    font-size: 13px;
+    color: #374151;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 0 0 12px;
+    text-align: center;
+    line-height: 1.5;
+}
+/* ── Mobile Responsiveness ── */
+@media (max-width: 480px) {
+  .company-review-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .company-review-modal {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+    margin: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}

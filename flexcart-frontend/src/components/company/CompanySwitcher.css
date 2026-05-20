@@ -1,0 +1,98 @@
+.company-switcher {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cs-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cs-header h2 {
+  font-size: 24px;
+  color: #e2e8f0;
+  margin: 0 0 8px;
+}
+
+.cs-header p {
+  color: #94a3b8;
+  font-size: 14px;
+  margin: 0;
+}
+
+.cs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.cs-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 2px solid rgba(100, 116, 139, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-card:hover {
+  border-color: rgba(102, 126, 234, 0.5);
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.cs-card.active {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.cs-card__logo img {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 2px solid rgba(100, 116, 139, 0.3);
+}
+
+.cs-card__info h3 {
+  font-size: 16px;
+  color: #e2e8f0;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cs-badge {
+  font-size: 18px;
+}
+
+.cs-category {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.cs-card__stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.cs-active-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #667eea;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}

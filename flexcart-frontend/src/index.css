@@ -1,0 +1,380 @@
+/* =========================================
+   GLOBAL STYLES - FlexCart
+   ========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Light Theme */
+  --primary: #4F46E5;
+  --primary-light: #818CF8;
+  --primary-dark: #3730A3;
+  --secondary: #F59E0B;
+  --secondary-light: #FCD34D;
+  --accent: #10B981;
+  --accent-light: #34D399;
+  --danger: #EF4444;
+  --danger-light: #FCA5A5;
+  --warning: #F59E0B;
+  --info: #3B82F6;
+
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-tertiary: #F1F5F9;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F1F5F9;
+  --bg-sidebar: #FFFFFF;
+  --bg-header: rgba(255, 255, 255, 0.95);
+  --bg-modal: rgba(0, 0, 0, 0.5);
+  --bg-dropdown: #FFFFFF;
+
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-tertiary: #94A3B8;
+  --text-inverse: #FFFFFF;
+  --text-link: #4F46E5;
+
+  --border-color: #E2E8F0;
+  --border-light: #F1F5F9;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --header-height: 60px;
+  --sidebar-width-collapsed: 64px;
+  --sidebar-width-expanded: 260px;
+  --category-bar-height: 52px;
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Poppins', 'Inter', sans-serif;
+
+  --z-sidebar: 150;
+  --z-header: 200;
+  --z-dropdown: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #0F172A;
+  --bg-secondary: #1E293B;
+  --bg-tertiary: #334155;
+  --bg-card: #1E293B;
+  --bg-hover: #334155;
+  --bg-sidebar: #1E293B;
+  --bg-header: rgba(15, 23, 42, 0.95);
+  --bg-dropdown: #1E293B;
+
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+  --text-link: #818CF8;
+
+  --border-color: #334155;
+  --border-light: #1E293B;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-primary);
+  border: none;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+/* =========================================
+   GLOBAL INPUT STYLES
+   ========================================= */
+
+input, textarea, select {
+  font-family: var(--font-primary);
+  font-size: 0.9375rem;
+  outline: none;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* =========================================
+   SEARCH INPUT OVERRIDE
+   ========================================= */
+
+.search-input,
+.search-input:focus,
+.search-input:focus-visible,
+.search-input:focus-within,
+.search-input:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.ai-text-input:focus-visible {
+  outline: none !important;
+}
+
+/* Form inputs inside modals */
+.form-input {
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  width: 100%;
+  font-size: 0.875rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* =========================================
+   GENERAL
+   ========================================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Toast Customization */
+.Toastify__toast {
+  border-radius: var(--radius-md) !important;
+  font-family: var(--font-primary) !important;
+}
+
+/* =========================================
+   GLOBAL: Force white text on ALL action
+   buttons. Background follows appearance
+   color via var(--primary) in each component.
+   ========================================= */
+
+.mp-save-btn,
+.sa-submit-btn,
+.settings-save-btn.has-changes,
+.bt-apply-btn,
+.pd-login-btn,
+.payment-submit-btn,
+.success-done-btn,
+.auth-submit-btn,
+.feedback-submit-btn,
+.spin-btn,
+.sr-spin-btn,
+.ai-submit-btn,
+.company-submit-btn,
+.add-cart-btn,
+.fp-cart-btn {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.mp-save-btn:hover,
+.sa-submit-btn:hover,
+.settings-save-btn.has-changes:hover,
+.bt-apply-btn:hover,
+.pd-login-btn:hover,
+.payment-submit-btn:hover,
+.success-done-btn:hover,
+.auth-submit-btn:hover,
+.feedback-submit-btn:hover,
+.spin-btn:hover,
+.sr-spin-btn:hover,
+.ai-submit-btn:hover,
+.company-submit-btn:hover,
+.add-cart-btn:hover,
+.fp-cart-btn:hover {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.mp-save-btn:disabled,
+.sa-submit-btn:disabled,
+.payment-submit-btn:disabled,
+.auth-submit-btn:disabled,
+.feedback-submit-btn:disabled,
+.ai-submit-btn:disabled,
+.company-submit-btn:disabled {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  opacity: 0.5;
+}
+
+/* Feedback submit button: keep in sync with Appearance color */
+.feedback-submit-btn {
+  background: var(--primary) !important;
+}
+
+.feedback-submit-btn:hover:not(:disabled) {
+  filter: brightness(0.9);
+}
+
+/* Disabled cart buttons - grey */
+.add-cart-btn:disabled,
+.fp-cart-btn.disabled {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-tertiary) !important;
+  -webkit-text-fill-color: var(--text-tertiary) !important;
+  opacity: 0.6;
+}
+
+/* Secondary/cancel buttons */
+.sa-cancel-btn,
+.pd-register-btn {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  border: 1.5px solid var(--border-color) !important;
+}
+
+.sa-cancel-btn:hover,
+.pd-register-btn:hover {
+  background: var(--bg-hover) !important;
+  border-color: var(--text-tertiary) !important;
+}
+
+/* Inactive settings save button */
+.settings-save-btn:not(.has-changes) {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-tertiary) !important;
+  -webkit-text-fill-color: var(--text-tertiary) !important;
+  border: none !important;
+  opacity: 0.6;
+}
+
+/* Modal close button */
+.modal-close {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-secondary) !important;
+}
+
+.modal-close:hover {
+  background: #EF4444 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* =========================================
+   GLOBAL: Section title/header positioning
+   ========================================= */
+
+.section-header,
+.spin-header,
+.order-header,
+.request-header,
+.favourite-header,
+.following-header,
+.review-header,
+.support-header,
+.feedback-header {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+/* =========================================
+   CATCH-ALL: Any button inside company-form
+   or modal that might get overridden
+   ========================================= */
+
+.company-form button[type="submit"],
+.company-form button:last-child:not(.file-upload-area) {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: none !important;
+}
+
+.company-form button[type="submit"]:hover,
+.company-form button:last-child:not(.file-upload-area):hover {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  filter: brightness(0.85);
+}

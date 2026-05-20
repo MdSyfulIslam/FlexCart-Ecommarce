@@ -1,0 +1,10 @@
+.Toastify__toast-container {
+  z-index: 999999 !important;
+}
+
+.Toastify__toast {
+  border-radius: 12px !important;
+  font-family: var(--font-primary) !important;
+  font-size: 0.875rem !important;
+  box-shadow: var(--shadow-lg) !important;
+}

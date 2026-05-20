@@ -1,0 +1,343 @@
+.company-leaderboard {
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Loading & Empty */
+.cl-loading, .cl-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 16px;
+  color: var(--text-secondary);
+}
+
+.cl-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: clSpin 0.8s linear infinite;
+}
+
+@keyframes clSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Header */
+.cl-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cl-header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(251,191,36,0.2), rgba(245,158,11,0.2));
+  border-radius: 16px;
+  color: #fbbf24;
+  margin-bottom: 12px;
+}
+
+.cl-header h1 {
+  font-size: 26px;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
+
+.cl-header p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ===== PODIUM (Top 3) ===== */
+.cl-podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding: 0 20px;
+}
+
+.cl-podium-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 16px 16px;
+  border-radius: 16px;
+  text-align: center;
+  position: relative;
+  width: 200px;
+  transition: transform 0.2s;
+}
+
+.cl-podium-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 1st place — tallest */
+.cl-podium-first {
+  background: linear-gradient(180deg, rgba(251,191,36,0.15) 0%, rgba(251,191,36,0.05) 100%);
+  border: 2px solid rgba(251,191,36,0.4);
+  min-height: 260px;
+  order: 2;
+}
+
+/* 2nd place */
+.cl-podium-second {
+  background: linear-gradient(180deg, rgba(192,192,192,0.12) 0%, rgba(192,192,192,0.04) 100%);
+  border: 2px solid rgba(192,192,192,0.35);
+  min-height: 220px;
+  order: 1;
+}
+
+/* 3rd place */
+.cl-podium-third {
+  background: linear-gradient(180deg, rgba(205,127,50,0.12) 0%, rgba(205,127,50,0.04) 100%);
+  border: 2px solid rgba(205,127,50,0.35);
+  min-height: 200px;
+  order: 3;
+}
+
+.cl-podium-medal {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.cl-podium-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+  margin-bottom: 8px;
+}
+
+.cl-podium-card h3 {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+}
+
+.cl-podium-owner {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.cl-podium-revenue {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fbbf24;
+  margin-bottom: 8px;
+}
+
+.cl-podium-first .cl-podium-revenue { color: #fbbf24; }
+.cl-podium-second .cl-podium-revenue { color: #c0c0c0; }
+.cl-podium-third .cl-podium-revenue { color: #cd7f32; }
+
+.cl-podium-stats {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* ===== TABLE (All companies) ===== */
+.cl-table {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.cl-table-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 80px 80px 90px;
+  padding: 12px 18px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cl-table-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 80px 80px 90px;
+  padding: 14px 18px;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.2s;
+}
+
+.cl-table-row:last-child {
+  border-bottom: none;
+}
+
+.cl-table-row:hover {
+  background: var(--bg-hover);
+}
+
+.cl-table-row.rank-gold {
+  background: rgba(251,191,36,0.04);
+}
+
+.cl-table-row.rank-silver {
+  background: rgba(192,192,192,0.04);
+}
+
+.cl-table-row.rank-bronze {
+  background: rgba(205,127,50,0.04);
+}
+
+/* Column styles */
+.cl-col-rank {
+  text-align: center;
+}
+
+.cl-rank-medal {
+  font-size: 22px;
+}
+
+.cl-rank-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.cl-col-company {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.cl-row-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.cl-row-info {
+  min-width: 0;
+}
+
+.cl-row-info h4 {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cl-row-info span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.cl-col-revenue {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: right;
+}
+
+.cl-col-sales {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.cl-col-rating {
+  font-size: 13px;
+  color: #fbbf24;
+  text-align: center;
+}
+
+.cl-col-followers {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .cl-podium {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cl-podium-card {
+    width: 100%;
+    max-width: 280px;
+    min-height: auto !important;
+    order: unset !important;
+  }
+
+  .cl-table-header {
+    display: none;
+  }
+
+  .cl-table-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 16px;
+  }
+
+  .cl-col-rank {
+    width: 40px;
+  }
+
+  .cl-col-company {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cl-col-revenue,
+  .cl-col-sales,
+  .cl-col-rating,
+  .cl-col-followers {
+    font-size: 12px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-leaderboard {
+    padding: 12px;
+  }
+
+  .cl-header h1 {
+    font-size: 20px;
+  }
+}
